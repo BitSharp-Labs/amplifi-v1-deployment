@@ -1,0 +1,9 @@
+@prb/test/=lib/amplifi-v1-core/lib/prb-math/lib/prb-test/src/
+amplifi-v1-common/=lib/amplifi-v1-core/lib/amplifi-v1-common/src/
+amplifi-v1-core/=lib/amplifi-v1-core/src/
+amplifi-v1-periphery/=lib/amplifi-v1-periphery/src/
+ds-test/=lib/forge-std/lib/ds-test/src/
+forge-std/=lib/forge-std/src/
+openzeppelin-contracts/=lib/amplifi-v1-core/lib/openzeppelin-contracts/
+prb-math/=lib/amplifi-v1-core/lib/prb-math/src/
+prb-test/=lib/amplifi-v1-core/lib/prb-math/lib/prb-test/src/
