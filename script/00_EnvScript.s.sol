@@ -33,36 +33,34 @@ contract AnvilKeys is Script {
     uint256 public anvilPk9 = vm.parseUint("0x2a871d0798f97d79848a013d4936a73bf4cc922c825d33c1cf7073dff6d409c6");
 
     modifier broadcastWithPK(uint256 privateKey) {
-	vm.startBroadcast(privateKey);
-	_;
-	vm.stopBroadcast();
+        vm.startBroadcast(privateKey);
+        _;
+        vm.stopBroadcast();
     }
 
     modifier broadcast() {
-	vm.startBroadcast();
-	_;
-	vm.stopBroadcast();
+        vm.startBroadcast();
+        _;
+        vm.stopBroadcast();
     }
 }
 
 contract BSCAddr is Script {
-    address public pancakeNPM = vm.parseAddress("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
-    address public pancakeSwapRouter = vm.parseAddress("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
+    address public pancakeNPM = vm.parseAddress("0x46A15B0b27311cedF172AB29E4f4766fbE7F4364");
+    address public pancakeSwapRouter = vm.parseAddress("0x13f4EA83D0bd40E75C8222255bc855a974568Dd4");
 
-    address public uniswapNPM = vm.parseAddress("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
-    address public uniswapSwapRouter = vm.parseAddress("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
-
-    address public WBNB = vm.parseAddress("0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c");
+    address public uniswapNPM = vm.parseAddress("0x46A15B0b27311cedF172AB29E4f4766fbE7F4364");
+    address public uniswapSwapRouter = vm.parseAddress("0x13f4EA83D0bd40E75C8222255bc855a974568Dd4");
 
     address public amplifiSteward = vm.parseAddress("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
 }
 
 contract FixedPoint96Helper is Script {
     function toFixPoint96(UD60x18 from) internal pure returns (uint160) {
-	return uint160(mulDiv18(unwrap(from), FixedPoint96.Q96));
+        return uint160(mulDiv18(unwrap(from), FixedPoint96.Q96));
     }
 
     function fromFixPoint96(uint160 from) internal pure returns (UD60x18) {
-	return UD60x18.wrap(MathHelper.mulDivRoundingUp(from, 1e18, FixedPoint96.Q96));
+        return UD60x18.wrap(MathHelper.mulDivRoundingUp(from, 1e18, FixedPoint96.Q96));
     }
 }
