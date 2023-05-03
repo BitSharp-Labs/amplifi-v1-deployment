@@ -17,9 +17,9 @@ import {Dispatcher} from "amplifi-v1-periphery/Dispatcher.sol";
 import {PancakeOperator} from "amplifi-v1-periphery/PancakeOperator.sol";
 import {UniswapV3Operator} from "amplifi-v1-periphery/UniswapV3Operator.sol";
 
-import {INonfungiblePositionManager} from "amplifi-v1-periphery/interfaces/pancake/INonfungiblePositionManager.sol";
-import {IPancakeFactory} from "amplifi-v1-periphery/interfaces/pancake/IPancakeFactory.sol";
-import {IPancakePool} from "amplifi-v1-periphery/interfaces/pancake/IPancakePool.sol";
+import {INonfungiblePositionManager} from "amplifi-v1-periphery/interfaces/uniswap/INonfungiblePositionManager.sol";
+import {IUniswapV3Factory} from "amplifi-v1-periphery/interfaces/uniswap/IUniswapV3Factory.sol";
+import {IUniswapV3Pool} from "amplifi-v1-periphery/interfaces/uniswap/IUniswapV3Pool.sol";
 
 import {AnvilKeys, BSCAddr, FixedPoint96Helper} from "./00_EnvScript.s.sol";
 import {TickMath} from "../src/libraries/TickMath.sol";
@@ -97,8 +97,8 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
         _treasurer = address(new Treasurer(_registry, pancakeNPM));
         _dispatcher = address(new Dispatcher(_registry));
 
-        _panOperator = address(new PancakeOperator(_registry, _bookkeeper, pancakeNPM, pancakeSwapRouter));
-        _uniOperator = address(new UniswapV3Operator(_registry, _bookkeeper, uniswapNPM, uniswapSwapRouter));
+        _panOperator = address(new PancakeOperator(_bookkeeper, pancakeNPM, pancakeSwapRouter));
+        _uniOperator = address(new UniswapV3Operator(_bookkeeper, uniswapNPM, uniswapSwapRouter));
     }
 
     function initAmplifiContracts() internal {
@@ -129,8 +129,8 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
         address recipient
     ) internal returns (address poolAddr) {
         INonfungiblePositionManager npm = INonfungiblePositionManager(pancakeNPM);
-        IPancakeFactory factory = IPancakeFactory(npm.factory());
-        IPancakePool pool = IPancakePool(factory.createPool(token0, token1, fee));
+        IUniswapV3Factory factory = IUniswapV3Factory(npm.factory());
+        IUniswapV3Pool pool = IUniswapV3Pool(factory.createPool(token0, token1, fee));
 
         uint256 amount1 = mulDiv18(amount0, UD60x18.unwrap(price));
         if (token0 > token1) {
