@@ -13,6 +13,7 @@ import {Bookkeeper} from "amplifi-v1-core/contracts/Bookkeeper.sol";
 import {PUD, ERC20} from "amplifi-v1-core/contracts/PUD.sol";
 
 import {Treasurer} from "amplifi-v1-periphery/Treasuer.sol";
+import {Dispatcher} from "amplifi-v1-periphery/Dispatcher.sol";
 import {PancakeOperator} from "amplifi-v1-periphery/PancakeOperator.sol";
 import {UniswapV3Operator} from "amplifi-v1-periphery/UniswapV3Operator.sol";
 
@@ -55,6 +56,7 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
     address private _treasurer;
     address private _panOperator;
     address private _uniOperator;
+    address private _dispatcher;
 
     address private _PUD;
     address private _WBNB;
@@ -90,6 +92,7 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
         _PUD = address(new TestnetPUD("Amplifi - PUD", "PUD", _registry));
         _bookkeeper = address(new Bookkeeper("Amplifi - NFT", "AMP", _registry));
         _treasurer = address(new Treasurer(_registry, pancakeNPM));
+        _dispatcher = address(new Dispatcher(_registry));
 
         _panOperator = address(new PancakeOperator(_registry, _bookkeeper, pancakeNPM, pancakeSwapRouter));
         _uniOperator = address(new UniswapV3Operator(_registry, _bookkeeper, uniswapNPM, uniswapSwapRouter));
@@ -110,7 +113,7 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
         // WBNB(10,000 ether) - USDC(4,000,000 ether)
         _WBNB_USDC = setupSwapPool(_WBNB, _USDC, fee, UD60x18.wrap(400e18), 10000 ether, anvilAddr0);
 
-        // WBNB(20,000 ether) - WETH(5,000 ether)
+        // WBNB(20,000 ether) - WETH(4,000 ether)
         _WBNB_WETH = setupSwapPool(_WBNB, _WETH, fee, UD60x18.wrap(0.2e18), 20000 ether, anvilAddr0);
     }
 
@@ -237,6 +240,7 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
         vm.writeLine(filepath, string.concat("AMP_BOOKKEEPER=", vm.toString(_bookkeeper)));
         vm.writeLine(filepath, string.concat("AMP_PUD=", vm.toString(_PUD)));
         vm.writeLine(filepath, string.concat("AMP_TREASURER=", vm.toString(_treasurer)));
+        vm.writeLine(filepath, string.concat("AMP_TREASURER=", vm.toString(_dispatcher)));
         vm.writeLine(filepath, string.concat("AMP_PANCAKE_OPERATOR=", vm.toString(_panOperator)));
         vm.writeLine(filepath, string.concat("AMP_UNISWAP_OPERATOR=", vm.toString(_uniOperator)));
 
@@ -257,6 +261,7 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
         console.log("Bookkeeper:  %s", _bookkeeper);
         console.log("PUD:         %s", _PUD);
         console.log("Treasurer:   %s", _treasurer);
+        console.log("Dispatcher:  %s", _dispatcher);
         console.log("PanOperator: %s", _panOperator);
         console.log("UniOperator: %s", _uniOperator);
         console.log("WBNB:        %s", _WBNB);

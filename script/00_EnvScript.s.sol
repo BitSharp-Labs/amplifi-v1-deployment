@@ -49,7 +49,7 @@ contract BSCAddr is Script {
     address public pancakeNPM = vm.parseAddress("0x46A15B0b27311cedF172AB29E4f4766fbE7F4364");
     address public pancakeSwapRouter = vm.parseAddress("0x13f4EA83D0bd40E75C8222255bc855a974568Dd4");
 
-    address public uniswapNPM = vm.parseAddress("0x46A15B0b27311cedF172AB29E4f4766fbE7F4364");
+    address public uniswapNPM = vm.parseAddress("0x7b8A01B39D58278b5DE7e48c8449c9f4F5170613");
     address public uniswapSwapRouter = vm.parseAddress("0x13f4EA83D0bd40E75C8222255bc855a974568Dd4");
 
     address public amplifiSteward = vm.parseAddress("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266");
