@@ -20,7 +20,6 @@ amplifi-v1-deployment> anvil --rpc-url=$FORK_RPC --fork-block-number=$FORK_BLOCK
 Update to the latest contracts.
 
 ```shell
-amplifi-v1-deployment> forge update lib/amplifi-v1-common
 amplifi-v1-deployment> forge update lib/amplifi-v1-core
 amplifi-v1-deployment> forge update lib/amplifi-v1-periphery
 ```
