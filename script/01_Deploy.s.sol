@@ -77,6 +77,9 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
 
         initRegistry();
 
+        mintTestERC20(anvilAddr1, 10000 ether);
+        mintTestERC20(anvilAddr2, 10000 ether);
+
         logAddressToENVFile("env/contracts.env");
         logAddress();
     }
@@ -267,5 +270,11 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
         console.log("WBNB:        %s", _WBNB);
         console.log("USDC:        %s", _USDC);
         console.log("WETH:        %s", _WETH);
+    }
+
+    function mintTestERC20(address to, uint256 amount) internal {
+        ERC20(_WBNB).transfer(to, amount);
+        ERC20(_USDC).transfer(to, amount);
+        ERC20(_WETH).transfer(to, amount);
     }
 }
