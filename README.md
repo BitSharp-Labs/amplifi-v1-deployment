@@ -6,16 +6,24 @@
 
 ```shell
 amplifi-v1-deployment> source env/anvil.env
-amplifi-v1-deployment> anvil --rpc-url=$FORK_PRC --fork-block-number=$FORK_BLOCK_NUMBER
+amplifi-v1-deployment> anvil --rpc-url=$FORK_RPC --fork-block-number=$FORK_BLOCK_NUMBER
 ```
 
 We do not change the chainId of forked BSC chain which is `56`, try to change chainId to whatever you perfer if it mess up any metamask settings. chainId could be changed with following parameter when starting anvil node.
 
 ```shell
-amplifi-v1-deployment> anvil --rpc-url=$FORK_PRC --fork-block-number=$FORK_BLOCK_NUMBER --chain-id=203
+amplifi-v1-deployment> anvil --rpc-url=$FORK_RPC --fork-block-number=$FORK_BLOCK_NUMBER --chain-id=203
 ```
 
 ### deploy contracts to local test network
+
+Update to the latest contracts.
+
+```shell
+amplifi-v1-deployment> forge update lib/amplifi-v1-common
+amplifi-v1-deployment> forge update lib/amplifi-v1-core
+amplifi-v1-deployment> forge update lib/amplifi-v1-periphery
+```
 
 Run following command.
 
