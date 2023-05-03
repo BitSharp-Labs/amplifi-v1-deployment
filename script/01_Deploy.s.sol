@@ -243,7 +243,7 @@ contract Deploy is AnvilKeys, BSCAddr, FixedPoint96Helper {
         vm.writeLine(filepath, string.concat("AMP_BOOKKEEPER=", vm.toString(_bookkeeper)));
         vm.writeLine(filepath, string.concat("AMP_PUD=", vm.toString(_PUD)));
         vm.writeLine(filepath, string.concat("AMP_TREASURER=", vm.toString(_treasurer)));
-        vm.writeLine(filepath, string.concat("AMP_TREASURER=", vm.toString(_dispatcher)));
+        vm.writeLine(filepath, string.concat("AMP_DISPATCHER=", vm.toString(_dispatcher)));
         vm.writeLine(filepath, string.concat("AMP_PANCAKE_OPERATOR=", vm.toString(_panOperator)));
         vm.writeLine(filepath, string.concat("AMP_UNISWAP_OPERATOR=", vm.toString(_uniOperator)));
 
