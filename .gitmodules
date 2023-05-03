@@ -7,6 +7,3 @@
 [submodule "lib/amplifi-v1-periphery"]
 	path = lib/amplifi-v1-periphery
 	url = https://github.com/BitSharp-Labs/amplifi-v1-periphery
-[submodule "lib/amplifi-v1-common"]
-	path = lib/amplifi-v1-common
-	url = https://github.com/BitSharp-Labs/amplifi-v1-common
