@@ -17,23 +17,22 @@ amplifi-v1-deployment> anvil --rpc-url=$FORK_RPC --fork-block-number=$FORK_BLOCK
 
 ### deploy contracts to local test network
 
-Update to the latest contracts.
+Install all dependencies:
 
 ```shell
-amplifi-v1-deployment> forge update lib/amplifi-v1-core
-amplifi-v1-deployment> forge update lib/amplifi-v1-periphery
+amplifi-v1-deployment> forge install
 ```
 
-Run following command.
+Deploy contracts to local test network:
 
 ```shell
-amplifi-v1-deployment> forge script script/01_Deploy.s.sol:Deploy --rpc-url="http://localhost:8545" --broadcast
+amplifi-v1-deployment> forge script script/Localhost.s.sol:Deploy --rpc-url="http://localhost:8545" --broadcast
 ```
 
-The command not only deployed all amplifi contract to local network, but also finished following tasks:
+The command not only deployed all amplifi contracts to local network, but also finished following tasks:
 
 1. Deployed three more test ERC20 contract (WBNB/WETH/USDC);
 2. Setup there pancake swap pool (WBNB-PUD/WBNB-WETH/WBNB-USDC);
 3. Added token info into registrar contract.
 
-All contract address deployed should be logged in the file `env/contracts.env`, also useful contract address would have had be print out in the console during the deploying.
+All contract address deployed will be written into two files under directory `scripts_out`, one is `scripts_out/contracts.env` in env file format, and another is `scripts_out/contracts.json` in json format.

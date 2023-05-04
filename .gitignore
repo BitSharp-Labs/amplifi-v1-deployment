@@ -10,6 +10,5 @@ out/
 # Docs
 docs/
 
-# Dotenv file
-*/*.env
-!env/anvil.env
+scripts_out/*.env
+scripts_out/*.json
