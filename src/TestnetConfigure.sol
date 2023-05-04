@@ -176,8 +176,8 @@ contract TestnetConfigure {
         this.addTokenInfo(amp.WBNB, TokenType.Fungible, TokenSubtype.None, address(0), 0.25e18);
         this.addTokenInfo(amp.USDC, TokenType.Fungible, TokenSubtype.None, pools.WBNB_USDC, 0.05e18);
         this.addTokenInfo(amp.WETH, TokenType.Fungible, TokenSubtype.None, pools.WBNB_WETH, 0.25e18);
-        this.addTokenInfo(amp.Pancake_NFP, TokenType.NonFungible, TokenSubtype.UniswapV3NFP, address(0), 0);
-        this.addTokenInfo(amp.Uniswap_NFP, TokenType.NonFungible, TokenSubtype.UniswapV3NFP, address(0), 0);
+        this.addTokenInfo(amp.Pancake_NFP, TokenType.NonFungible, TokenSubtype.UniswapV3NFP, amp.pancakeOperator, 0);
+        this.addTokenInfo(amp.Uniswap_NFP, TokenType.NonFungible, TokenSubtype.UniswapV3NFP, amp.uniswapOperator, 0);
     }
 
     function mintTestERC20(address to, uint256 amount) external {
